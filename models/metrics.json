@@ -1,0 +1,95 @@
+{
+  "backend": "lightgbm",
+  "headline_metric": "pr_auc",
+  "n_train": 2000,
+  "n_test": 500,
+  "injury_rate_train": 0.3975,
+  "injury_rate_test": 0.38,
+  "pr_auc": 0.618339903617396,
+  "roc_auc": 0.737207130730051,
+  "brier": 0.19432844702682092,
+  "brier_uncalibrated": 0.19842037990828193,
+  "report": {
+    "0": {
+      "precision": 0.6903073286052009,
+      "recall": 0.9419354838709677,
+      "f1-score": 0.7967257844474761,
+      "support": 310.0
+    },
+    "1": {
+      "precision": 0.7662337662337663,
+      "recall": 0.3105263157894737,
+      "f1-score": 0.4419475655430712,
+      "support": 190.0
+    },
+    "accuracy": 0.702,
+    "macro avg": {
+      "precision": 0.7282705474194836,
+      "recall": 0.6262308998302207,
+      "f1-score": 0.6193366749952737,
+      "support": 500.0
+    },
+    "weighted avg": {
+      "precision": 0.7191593749040558,
+      "recall": 0.702,
+      "f1-score": 0.6619100612638021,
+      "support": 500.0
+    }
+  },
+  "feature_cols": [
+    "age",
+    "age_sq",
+    "age_over_30",
+    "is_big",
+    "is_guard",
+    "minutes_l7",
+    "minutes_l14",
+    "minutes_l30",
+    "minutes_spike_7v30",
+    "games_l7",
+    "games_l14",
+    "games_l30",
+    "road_games_l14",
+    "back_to_backs_l14",
+    "avg_rest_days_l14",
+    "minutes_trend_slope",
+    "season_minutes_total",
+    "games_played_season",
+    "usage_proxy",
+    "team_pace",
+    "efficiency_drop",
+    "prior_injuries_365d",
+    "days_since_last_injury",
+    "injury_prone_flag",
+    "recurrence_same_area"
+  ],
+  "leakage_controls": [
+    "Chronological train/test split by as_of_date",
+    "prior_injuries_365d / days_since_last_injury are as-of snapshot only",
+    "Target injured_next_14d is never used as a feature",
+    "Isotonic calibration fit on a late train slice, not the test set"
+  ],
+  "calibration": "isotonic",
+  "shap_top5": [
+    {
+      "feature": "days_since_last_injury",
+      "mean_abs_shap": 0.688493111838699
+    },
+    {
+      "feature": "back_to_backs_l14",
+      "mean_abs_shap": 0.4504314488726945
+    },
+    {
+      "feature": "minutes_l7",
+      "mean_abs_shap": 0.3642214143490145
+    },
+    {
+      "feature": "minutes_spike_7v30",
+      "mean_abs_shap": 0.303110228612745
+    },
+    {
+      "feature": "prior_injuries_365d",
+      "mean_abs_shap": 0.2991019573876355
+    }
+  ]
+}

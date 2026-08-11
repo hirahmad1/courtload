@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+.DS_Store
+.ipynb_checkpoints/
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*.parquet
+models/*.pkl
+.streamlit/secrets.toml
+*.log
+.pytest_cache/
+scripts/
